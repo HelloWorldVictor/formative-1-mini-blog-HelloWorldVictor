@@ -86,7 +86,7 @@ src/
 
 ### Component types: functional vs. class
 
-**All components, including `Post`, are functional components.** For `Post` specifically:
+**All components, including `Post`, are functional components.** In Week 3 we compared functional and class components and looked at how each one handles state, lifecycle and optimization (`React.memo` for functions, `PureComponent` for classes). Based on that comparison, I chose a functional component for `Post` because:
 
 - `Post` only receives props and returns markup. It has no state and no lifecycle logic, so a class would only add boilerplate (`extends React.Component`, `render()`, `this.props`).
 - Functional components are the recommended way to write React today. Hooks such as `useState` and `useEffect` cover everything class lifecycle methods used to do, and the React docs present class components as legacy.
