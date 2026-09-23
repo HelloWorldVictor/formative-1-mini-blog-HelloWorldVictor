@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import type { Post as PostType } from '../types/post'
+import { isNewPost } from '../utils/postUtils'
 import Post from './Post'
 import './PostList.css'
 
@@ -38,8 +40,12 @@ const samplePosts: PostType[] = [
   },
 ]
 
-/** Lists all blog posts, newest first. */
+const authors = [...new Set(samplePosts.map((post) => post.author.name))]
+
+/** Lists all blog posts, newest first, with an author spotlight picker. */
 function PostList() {
+  const [spotlightAuthor, setSpotlightAuthor] = useState(authors[0])
+
   return (
     <section className="post-list container" aria-labelledby="post-list-heading">
       <h1 id="post-list-heading" className="post-list__heading">
@@ -48,11 +54,29 @@ function PostList() {
       <p className="post-list__subheading">
         Quick tips and updates from the Dev Insights team.
       </p>
+      <label className="post-list__spotlight">
+        Spotlight author
+        <select
+          value={spotlightAuthor}
+          onChange={(event) => setSpotlightAuthor(event.target.value)}
+        >
+          {authors.map((name) => (
+            <option key={name} value={name}>
+              {name}
+            </option>
+          ))}
+          <option value="">No one</option>
+        </select>
+      </label>
       <ul className="post-list__items">
         {samplePosts.map((post) => (
           // Stable, unique ids as keys let React match items between renders.
           <li key={post.id}>
-            <Post post={post} />
+            <Post
+              post={post}
+              isHighlighted={post.author.name === spotlightAuthor}
+              isNew={isNewPost(post.datePosted)}
+            />
           </li>
         ))}
       </ul>
