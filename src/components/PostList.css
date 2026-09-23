@@ -1,0 +1,23 @@
+.post-list {
+  padding: 32px 0 64px;
+}
+
+.post-list__heading {
+  margin: 0 0 4px;
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+}
+
+.post-list__subheading {
+  margin: 0 0 24px;
+  color: var(--color-muted);
+}
+
+.post-list__items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
