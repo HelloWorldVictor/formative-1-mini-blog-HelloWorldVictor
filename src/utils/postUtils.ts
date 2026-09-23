@@ -7,7 +7,7 @@ const ONE_DAY_MS = 24 * 60 * 60 * 1000
 export function getPreview(content: string, wordCount = 20): string {
   const words = content.trim().split(/\s+/)
   if (words.length <= wordCount) return words.join(' ')
-  return `${words.slice(0, wordCount).join(' ')}…`
+  return `${words.slice(0, wordCount).join(' ').replace(/[.,;:!?]+$/, '')}…`
 }
 
 /** Formats an ISO date string as e.g. "Sep 21, 2026". */

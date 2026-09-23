@@ -32,3 +32,9 @@ describe('isNewPost', () => {
     expect(isNewPost('2026-09-24T12:00:00Z', now)).toBe(false)
   })
 })
+
+describe('getPreview punctuation', () => {
+  it('drops trailing punctuation before the ellipsis', () => {
+    expect(getPreview('It works. Really well', 2)).toBe('It works…')
+  })
+})
