@@ -36,7 +36,7 @@ const newBadgeStyle: CSSProperties = {
  *
  * Functional component wrapped in React.memo — see README for the reasoning.
  */
-function Post({ post, isHighlighted = false, isNew = false }: PostProps) {
+function PostCard({ post, isHighlighted = false, isNew = false }: PostProps) {
   const { title, author, content, datePosted } = post
 
   return (
@@ -61,4 +61,6 @@ function Post({ post, isHighlighted = false, isNew = false }: PostProps) {
 
 // memo wraps the logged component so that neither the logger wrapper nor
 // the card re-renders when the post's props are unchanged.
-export default memo(withLogger(Post, 'Post'))
+const Post = memo(withLogger(PostCard, 'Post'))
+
+export default Post

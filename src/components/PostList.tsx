@@ -44,7 +44,7 @@ const samplePosts: PostType[] = [
 const authors = [...new Set(samplePosts.map((post) => post.author.name))]
 
 /** Lists all blog posts, newest first, with an author spotlight picker. */
-function PostList() {
+function PostListBase() {
   const [spotlightAuthor, setSpotlightAuthor] = useState(authors[0])
 
   return (
@@ -85,4 +85,6 @@ function PostList() {
   )
 }
 
-export default withLogger(PostList, 'PostList')
+const PostList = withLogger(PostListBase, 'PostList')
+
+export default PostList

@@ -1,4 +1,4 @@
-import { useEffect, type ComponentType } from 'react'
+import { createElement, useEffect, type ComponentType } from 'react'
 
 /**
  * Higher-order component that logs to the console when the wrapped
@@ -19,7 +19,7 @@ function withLogger<P extends object>(
       }
     }, [])
 
-    return <WrappedComponent {...props} />
+    return createElement(WrappedComponent, props)
   }
 
   WithLogger.displayName = `withLogger(${name})`
