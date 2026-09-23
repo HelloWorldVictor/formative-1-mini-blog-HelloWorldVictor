@@ -1,4 +1,5 @@
 import { memo, type CSSProperties } from 'react'
+import withLogger from '../hocs/withLogger'
 import type { Post as PostType } from '../types/post'
 import { formatDate, getPreview } from '../utils/postUtils'
 import './Post.css'
@@ -58,4 +59,6 @@ function Post({ post, isHighlighted = false, isNew = false }: PostProps) {
   )
 }
 
-export default memo(Post)
+// memo wraps the logged component so that neither the logger wrapper nor
+// the card re-renders when the post's props are unchanged.
+export default memo(withLogger(Post, 'Post'))

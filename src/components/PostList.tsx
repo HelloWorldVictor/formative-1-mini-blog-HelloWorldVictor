@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { Post as PostType } from '../types/post'
+import withLogger from '../hocs/withLogger'
 import { isNewPost } from '../utils/postUtils'
 import Post from './Post'
 import './PostList.css'
@@ -84,4 +85,4 @@ function PostList() {
   )
 }
 
-export default PostList
+export default withLogger(PostList, 'PostList')
